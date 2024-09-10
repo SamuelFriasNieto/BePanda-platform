@@ -5,7 +5,7 @@ function App() {
   const apiUrl = 'https://be-panda-platform.vercel.app/';
     
     fetch(apiUrl)
-      .then(response => response.json())
+      .then(response => response.text())
       .then(data => console.log(data))
       .catch(error => console.error('Error fetching data:', error));
 

@@ -1,12 +1,13 @@
-// server.cjs
-const express = require('express');
-const app = express();
-const serverless = require('serverless-http');
+// api/server.js
+import express from 'express';
+import serverless from 'serverless-http';
 
+const app = express();
 app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('Hello from Express on Vercel!');
 });
 
-module.exports.handler = serverless(app);
+// Exporta el manejador como `handler`
+export const handler = serverless(app);

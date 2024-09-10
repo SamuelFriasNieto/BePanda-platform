@@ -2,6 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const apiUrl = 'https://be-panda-platform.vercel.app/';
+    
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error fetching data:', error));
+
   return (
     <div className="App">
       <header className="App-header">

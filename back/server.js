@@ -1,9 +1,16 @@
 import express from 'express';
 
+
+// api/index.js
 const app = express();
-const port= 3001
+const serverless = require('serverless-http');
+
 app.use(express.json());
 
-app.get('/', (req,res) => { res.send( 'Hola')})
+app.get('/', (req, res) => {
+  res.send('Hello from Express on Vercel!');
+});
 
-app.listen(port, () =>{console.log('funciona')})
+// Puedes agregar más rutas aquí
+
+module.exports.handler = serverless(app);

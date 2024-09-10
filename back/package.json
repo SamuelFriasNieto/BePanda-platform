@@ -11,8 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.19.1",
     "cors": "^2.8.5",
     "express": "^4.20.0",
+    "prisma": "^5.19.1",
     "serverless-http": "^3.2.0"
   }
 }

@@ -3,7 +3,7 @@ import express from 'express';
 
 // api/index.js
 const app = express();
-const serverless = require('serverless-http');
+import serverless from 'serverless-http'
 
 app.use(express.json());
 

@@ -6,9 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import AdminUserCreation from './pages/AdminUserCreation';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  
     <AdminUserCreation />
-  </React.StrictMode>
+ 
 );
 
 // If you want to start measuring performance in your app, pass a function

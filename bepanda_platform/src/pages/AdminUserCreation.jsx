@@ -1,4 +1,13 @@
 const AdminUserCreation = () => {
+  params = {
+    "email": "hola@hola.com",
+    "name": "Joni"
+  }
+
+  fetch("https://be-panda-platform.vercel.app/createUser",params)
+    .then(data => data.json)
+    .then(res => conmsole.log(res))
+
   return (
     <div className="mt-10 ">
       <form className="max-w-sm mx-auto border-black border-opacity-50 border-2 p-4 rounded-md">

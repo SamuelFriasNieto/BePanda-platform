@@ -7,13 +7,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Auth from './pages/Auth';
 import { AuthProvider } from './utils/authProvider';
 import ProtectedRoute from './utils/protectedRoute';
+import Sesion from './pages/sesion';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <AuthProvider>
         <Router>
             <Routes>
-                <Route path='/admin-user-creation' element={<ProtectedRoute><AdminUserCreation/></ProtectedRoute>} />
+                <Route path='/admin-user-creation' element={<AdminUserCreation/>} />
                 <Route path='/login' element={<Auth />} />
+                <Route path= '/sesion' element={<Sesion/>} />
             </Routes>
         </Router>
     </AuthProvider>

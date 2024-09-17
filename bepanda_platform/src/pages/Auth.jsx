@@ -25,7 +25,7 @@ const Auth = () => {
         const user = axios.post("http://localhost:3001/login", inputs)
 
         if(user) {
-            navigate('/login')
+            navigate('/sesion')
         }
     }
 

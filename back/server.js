@@ -6,7 +6,10 @@ import { insertUser } from './controllers/users/createUser.js';
 import { loginUser } from './controllers/users/loginUser.js';
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  credentials:true,
+  origin:'http://localhost:3000'
+}));
 app.use(express.json());
 app.use(session({
     secret: 'holaquetal',
@@ -21,8 +24,10 @@ app.use(session({
 app.post('/login', loginUser);
 
 app.get('/check-session', (req, res) => {
+  console.log(req.session)
     if (req.session.user) {
       res.send({ loggedIn: true, user: req.session.user });
+
     } else {
       res.send({ loggedIn: false });
     }

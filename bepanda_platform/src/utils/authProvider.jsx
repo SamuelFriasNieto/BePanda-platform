@@ -4,19 +4,25 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true); // Añadimos el estado de carga
 
   useEffect(() => {
-    fetch('http://localhost:3001/check-session') // Al cargar la app, revisa si ya existe sesión
+    fetch('http://localhost:3001/check-session', { credentials: 'include' })
       .then(res => res.json())
       .then(data => {
         if (data.loggedIn) {
-          setUser(data.user);
+          setUser(data.user);  // Aquí actualizamos el estado del usuario
         }
+        setLoading(false); // Detenemos la carga
+      })
+      .catch(error => {
+        console.error('Error fetching session:', error);
+        setLoading(false);
       });
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, loading }}>  
       {children}
     </AuthContext.Provider>
   );

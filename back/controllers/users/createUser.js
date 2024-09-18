@@ -1,11 +1,16 @@
 import {createUser} from '../../model/modelUser.js'
+import { sendMail } from '../../libs/sendMail.js';
+import passwordGenerator from 'password-generator'
+
+import bcrypt from 'bcrypt';
 
 export async function insertUser(req, res) {
     try {
       // Llama a createUser y maneja la respuesta
-      console.log("hooo")
+
       const { nombre, email } = req.body;
-      console.log(req.body.nombre, req.body.email)
+      const pass = passwordGenerator(12, false);
+      const hash = await bcrypt.hash(pass, 12);
   
       // Verifica que se reciban ambos parámetros
       if (!nombre || !email) {
@@ -13,7 +18,9 @@ export async function insertUser(req, res) {
       }
   
       // Llama a la función que crea el usuario
-      const newUser = await createUser(email, nombre);
+      const newUser = await createUser(email, nombre,hash);
+
+      sendMail(pass,email);
   
       // Devuelve la respuesta en formato JSON
       return res.status(200).json({ message: 'Usuario creado con éxito', user: newUser });

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "flowbite": "^2.5.1",
+    "flowbite-react": "^0.10.1",
+    "swiper": "^11.1.14"
+  }
+}

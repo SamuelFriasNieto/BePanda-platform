@@ -8,6 +8,7 @@ import Auth from './pages/Auth';
 import { AuthProvider } from './utils/authProvider';
 import ProtectedRoute from './utils/protectedRoute';
 import Home from './pages/Home';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <AuthProvider>

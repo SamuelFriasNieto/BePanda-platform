@@ -1,7 +1,9 @@
+import { useAuth } from "../utils/authProvider";
 import NavItem from "./NavItem";
 import ProfileItem from "./ProfileItem";
 
 const Nav = (user) => {
+    const {user1} = useAuth();
 
     return (
         <div className="h-[4rem]" >

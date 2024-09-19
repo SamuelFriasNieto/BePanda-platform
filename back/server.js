@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(session({
     secret: 'holaquetal',
     resave:false,
-    saveUninitialized:true,
+    saveUninitialized:false,
     cookie: {secure: false}
 }))
 
@@ -24,6 +24,7 @@ app.use(session({
 app.post('/login', loginUser);
 
 app.get('/check-session', (req, res) => {
+  console.log('esto es check-session', req.session)
     if (req.session.user) {
       res.send({ loggedIn: true, user: req.session.user });
 
@@ -35,12 +36,15 @@ app.get('/check-session', (req, res) => {
 
   app.post('/logout', (req, res) => {
     req.session.destroy((err) => {
+     
       if (err) {
         return res.status(500).send({ error: "No se pudo cerrar la sesión correctamente." });
       }
-      res.clearCookie('connect.sid', { path: '/' }); // Match the cookie name and path
+      res.clearCookie('connect.sid', { path: '/', httpOnly: true, secure: false }); // Match the cookie name and path 
+      console.log(req.session, 'logout')
       return res.send({ success: true, message: "Sesión cerrada correctamente." });
     });
+    
   });
 
 app.post('/createUser', insertUser);

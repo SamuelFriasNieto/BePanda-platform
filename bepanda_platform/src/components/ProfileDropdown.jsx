@@ -13,14 +13,12 @@ const ProfileDropdown = ({visible}) => {
 
     const handleLogout = async () => {
         try {
-            const response = await axios.post('http://localhost:3001/logout')
+            const response = await axios.post('http://localhost:3001/logout', {}, { withCredentials: true })
             console.log(response)
             if(response.data.success){
                 setUser(null);
 
-            }else {
-                console.error("No se cerró sesión");
-              }
+            }
         }catch(err){
             console.error('Error al cerrar sesión:', err);
         }

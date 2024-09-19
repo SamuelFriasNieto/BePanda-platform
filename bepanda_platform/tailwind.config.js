@@ -4,7 +4,16 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",  // Habilita Tailwind en archivos JS/JSX/TS/TSX
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'text-color': '#323338',
+        'text-color-hover': '#BDCCAC',
+        'panda-green': '#818770'
+      },
+      fontFamily: {
+        'montserrat': ['Montserrat']
+      }
+    },
   },
   plugins: [],
 }

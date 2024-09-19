@@ -24,13 +24,23 @@ app.use(session({
 app.post('/login', loginUser);
 
 app.get('/check-session', (req, res) => {
-  console.log(req.session)
     if (req.session.user) {
       res.send({ loggedIn: true, user: req.session.user });
 
     } else {
       res.send({ loggedIn: false });
     }
+  });
+
+
+  app.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).send({ error: "No se pudo cerrar la sesión correctamente." });
+      }
+      res.clearCookie('connect.sid', { path: '/' }); // Match the cookie name and path
+      return res.send({ success: true, message: "Sesión cerrada correctamente." });
+    });
   });
 
 app.post('/createUser', insertUser);

@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AdminUserCreation from './pages/AdminUserCreation';
@@ -11,6 +10,8 @@ import Auth from './pages/Auth';
 import { AuthProvider } from './utils/authProvider';
 import ProtectedRoute from './utils/protectedRoute';
 import Home from './pages/Home';
+import Passreset from './pages/Passreset';
+import RedireccionPass from './components/RedireccionPass';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +21,8 @@ root.render(
                 <Route path='/admin-user-creation' element={<AdminUserCreation/>} />
                 <Route path='/login' element={<Auth />} />
                 <Route path= '/home' element={<ProtectedRoute><Home/></ProtectedRoute>} />
+                <Route path= '/reset' element={<Passreset/>}/>
+                <Route path="/verify-reset" element={<RedireccionPass />} />
             </Routes>
         </Router>
     </AuthProvider>

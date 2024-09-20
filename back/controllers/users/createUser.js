@@ -1,7 +1,6 @@
 import {createUser} from '../../model/modelUser.js'
 import { sendMail } from '../../libs/sendMail.js';
 import passwordGenerator from 'password-generator'
-
 import bcrypt from 'bcrypt';
 
 export async function insertUser(req, res) {

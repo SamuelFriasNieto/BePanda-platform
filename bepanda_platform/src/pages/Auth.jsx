@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Error from "../components/Error";
@@ -89,9 +90,10 @@ const Auth = () => {
                                 Contraseña
                             </label>
                             <div className="text-sm">
-                                <a href="#" className="font-semibold text-text-color-hover hover:text-opacity-85">
-                                    ¿Olvidaste la contraseña?
-                                </a>
+                            <Link to='/reset' className="font-semibold text-text-color-hover hover:text-opacity-85">
+   ¿Olvidaste tu contraseña?
+</Link>
+
                             </div>
                         </div>
                         <div className="mt-2">

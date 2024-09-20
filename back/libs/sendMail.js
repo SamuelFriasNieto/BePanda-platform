@@ -55,6 +55,88 @@ export const sendMail = (verificationUrl, email) => {
     // Preview only available when sending through an Ethereal account
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
   });
-  
-  
-  }
+}
+
+
+// Function to send the password reset verification link
+export const sendMailPassResetLink = (email, verificationUrl) => {
+  let transporter1 = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    auth: {
+      user: 'abastospruebajon@gmail.com',
+      pass: 'jsdg nxpf vuhi xesd',
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+
+  let mailOptions = {
+    from: '"Fitai" <abastospruebajon@gmail.com>',
+    to: 'jonathansantos.vae@gmail.com',
+    subject: 'Verifica tu solicitud de restablecimiento de contraseña',
+    html: `
+      <div style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px; color: #333;">
+        <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 8px;">
+          <h2 style="text-align: center;">Verificación de restablecimiento de contraseña</h2>
+          <p style="font-size: 16px;">Recibimos una solicitud para restablecer tu contraseña.</p>
+          <p style="font-size: 16px;">Haz clic en el siguiente enlace para restablecer tu contraseña:</p>
+          <div style="text-align: center; margin: 20px 0;">
+            <a href="${verificationUrl}" style="padding: 10px 20px; background-color: #6ca26b; color: white; text-decoration: none;">Restablecer contraseña</a>
+          </div>
+          <p style="font-size: 14px;">Si no solicitaste este restablecimiento, ignora este correo.</p>
+        </div>
+      </div>
+    `
+  };
+
+  transporter1.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log('Mensaje enviado: %s', info.messageId);
+  });
+};
+
+// Function to send the new password to the user
+export const sendMailPass = (email, newPassword) => {
+  let transporter1 = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    auth: {
+      user: 'abastospruebajon@gmail.com',
+      pass: 'jsdg nxpf vuhi xesd',
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+
+  let mailOptions = {
+    from: '"Fitai" <abastospruebajon@gmail.com>',
+    to: 'jonathansantos.vae@gmail.com',
+    subject: 'Tu nueva contraseña',
+    html: `
+      <div style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px; color: #333;">
+        <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 8px;">
+          <h2 style="text-align: center;">Tu contraseña ha sido restablecida</h2>
+          <p style="font-size: 16px;">Tu nueva contraseña es la siguiente:</p>
+          <div style="text-align: center; margin: 20px 0;">
+            <p style="font-size: 20px; font-weight: bold;">${newPassword}</p>
+          </div>
+          <p style="font-size: 14px;">Te recomendamos cambiar esta contraseña después de iniciar sesión.</p>
+        </div>
+      </div>
+    `
+  };
+
+  transporter1.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log('Mensaje enviado: %s', info.messageId);
+  });
+};

@@ -1,7 +1,7 @@
 import { useCallback, useState, useEffect, useRef } from "react";
 import ProfileDropdown from "./ProfileDropdown";
 
-const ProfileItem = () => {
+const ProfileItem = ({user}) => {
     const [profileDropdown, setProfileDropdown] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -26,7 +26,8 @@ const ProfileItem = () => {
     }, [profileDropdown]);
 
     return (
-        <div ref={dropdownRef}>
+        <div ref={dropdownRef} className="flex items-center">
+            <p className="text-text-color mr-5 mt-1 cursor-pointer" onClick={handleClick}>{user.user.name}</p>
             <img
                 onClick={handleClick}
                 className="h-14 cursor-pointer"

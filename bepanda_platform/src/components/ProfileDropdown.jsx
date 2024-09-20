@@ -26,8 +26,8 @@ const ProfileDropdown = ({visible}) => {
     return (
         <div className="absolute">
             <div className="relative inline-block text-left">
-                <div className="absolute top-[-1rem] left-[-3rem]  z-10 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                    <div className="flex flex-col gap-1 py-2 px-2" role="none">
+                <div className="absolute top-[1.3rem]  z-10 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                    <div className="shadow-md flex flex-col gap-1 py-2 px-2" role="none">
                         <NavItem label="Perfil " size="md"/>
                         <div className="h-[1px] w-30  bg-black opacity-30"></div>
                         <NavItem label="Cerrar sesión" size="md" onClick={handleLogout}/>

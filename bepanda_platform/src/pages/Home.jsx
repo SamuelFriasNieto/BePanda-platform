@@ -8,8 +8,8 @@ const Home = () => {
 
   return (
     <div> 
-      <Nav />
-      <div className="bg-panda-green h-[40rem] relative">
+      <Nav user={user} />
+      <div className="bg-panda-green h-[45rem] relative">
         <div className="h-[1rem] w-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"

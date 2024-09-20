@@ -42,24 +42,24 @@ export async function login(email) {
 }
 
 
-  export async function checkmail(email) {
-    try {
-      const email = await prismadb.user.findUnique({
-        where: {
-          email: email
-        }
-       })
+export async function checkmail(email) {
+  try {
     
-       if(!email) {
-        return false;
-       }
-    
-       return true;
-    } catch (error) {
-      return Error(error)
-      
+    const user = await prismadb.user.findUnique({
+      where: {
+        email: email
+      }
+    });
+
+    if (!user) {
+      return false;
     }
+
+    return true;
+  } catch (error) {
+    throw new Error(error); 
   }
+}
 
 
     export async function updateUserPassword(email, hashedPassword) {

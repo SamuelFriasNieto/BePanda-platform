@@ -7,11 +7,12 @@ const JWT_SECRET = 'your_jwt_secret'; // Store this in environment variables
 export async function passreset(req, res) {
   try {
     const { email } = req.body;
+ 
 
     // Check if the email exists
     const user = await checkmail(email);
     if (!user) {
-      throw new Error('El email no existe.');
+     return res.send({ success: false, message: 'El email no existe' });
     }
 
     // Generate JWT token with email and expiration

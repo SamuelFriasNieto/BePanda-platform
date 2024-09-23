@@ -41,9 +41,7 @@ const handleSubmit = (e) => {
         .then(res => {
             console.log(res);
             if (!res.data.success) {
-              console.log(res.data, 'blububububub')
                 setError(res.data.message);
-                console.log(res.data.message);
             } else {
                 setError(res.data.message);
                 
@@ -63,7 +61,7 @@ const handleSubmit = (e) => {
 
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                 {error && <div className="text-center"><Error errorMessage={error} /></div>}
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="w-full max-w-sm">
                     <div>
                         <label htmlFor="email" className="block text-sm font-medium leading-6 text-text-color">
                             Escribe tu email

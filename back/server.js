@@ -6,6 +6,9 @@ import { insertUser } from './controllers/users/createUser.js';
 import { loginUser } from './controllers/users/loginUser.js';
 import { passreset } from './controllers/passreset.js';
 import { verifyResetLink } from './controllers/verifyResetLink.js';
+import { resetPassword } from './controllers/resetPassword.js';
+import { verifyToken } from './controllers/verifyToken.js';
+
 
 const app = express();
 app.use(cors({
@@ -51,7 +54,12 @@ app.get('/check-session', (req, res) => {
 
 
   app.post('/check-mail', passreset)
+
   app.get('/verify-reset', verifyResetLink); 
+
+  app.post('/reset-password', resetPassword);
+
+  app.post('/verify-token', verifyToken); 
 
 app.post('/createUser', insertUser);
 

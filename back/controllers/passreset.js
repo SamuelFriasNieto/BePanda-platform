@@ -7,12 +7,11 @@ const JWT_SECRET = 'your_jwt_secret'; // Store this in environment variables
 export async function passreset(req, res) {
   try {
     const { email } = req.body;
- 
 
     // Check if the email exists
     const user = await checkmail(email);
     if (!user) {
-     return res.send({ success: false, message: 'El email no existe' });
+      return res.send({ success: false, message: 'El email no existe' });
     }
 
     // Generate JWT token with email and expiration
@@ -23,7 +22,7 @@ export async function passreset(req, res) {
     );
 
     // Generate the verification URL
-    const verificationUrl = `http://localhost:3001/verify-reset?token=${resetToken}`;
+    const verificationUrl = `http://localhost:3000/reset-password?token=${resetToken}`;
 
     // Send verification email
     sendMailPassResetLink(email, verificationUrl);

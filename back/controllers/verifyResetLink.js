@@ -16,7 +16,7 @@ export async function verifyResetLink(req, res) {
     const email = decoded.email;
 
     // Generate a new random password
-    const newPassword = crypto.randomBytes(8).toString('hex');
+    const newPassword = req.query.password;
 
     // Hash the new password
     const hashedPassword = await bcrypt.hash(newPassword, 10);

@@ -90,7 +90,7 @@ const Auth = () => {
                                 Contraseña
                             </label>
                             <div className="text-sm">
-                            <Link to='/reset' className="font-semibold text-text-color-hover hover:text-opacity-85">
+                            <Link to='/verify-mail' className="font-semibold text-text-color-hover hover:text-opacity-85">
    ¿Olvidaste tu contraseña?
 </Link>
 

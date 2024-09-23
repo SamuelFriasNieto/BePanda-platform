@@ -5,7 +5,7 @@ const Error = ({errorMessage}) => {
 
     return (
         <div>
-            <p className="text-red-500 text-sm">{errorMessage}</p>
+            <p className="text-red-500 text-sm text-center">{errorMessage}</p>
         </div>
     )
 }

@@ -75,7 +75,7 @@ export const sendMailPassResetLink = (email, verificationUrl) => {
 
   let mailOptions = {
     from: '"Fitai" <abastospruebajon@gmail.com>',
-    to: 'jonathansantos.vae@gmail.com',
+    to: email,
     subject: 'Verifica tu solicitud de restablecimiento de contraseña',
     html: `
       <div style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px; color: #333;">
@@ -117,7 +117,7 @@ export const sendMailPass = (email, newPassword) => {
 
   let mailOptions = {
     from: '"Fitai" <abastospruebajon@gmail.com>',
-    to: 'jonathansantos.vae@gmail.com',
+    to: email,
     subject: 'Tu nueva contraseña',
     html: `
       <div style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px; color: #333;">

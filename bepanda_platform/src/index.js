@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import Passreset from './pages/Passreset';
 import RedireccionPass from './components/RedireccionPass';
 import NewPass from './components/ResetPasswordForm';
+import Profile from './pages/Profile';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +23,7 @@ root.render(
                 <Route path='/admin-user-creation' element={<AdminUserCreation/>} />
                 <Route path='/login' element={<Auth />} />
                 <Route path= '/home' element={<ProtectedRoute><Home/></ProtectedRoute>} />
+                <Route path= '/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>} />
                 <Route path= '/verify-mail' element={<Passreset/>}/>
                 <Route path= '/reset-password' element={<NewPass/>}/>
                 <Route path="/verify-reset" element={<RedireccionPass />} />

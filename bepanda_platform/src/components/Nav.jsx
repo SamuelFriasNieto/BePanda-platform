@@ -1,15 +1,19 @@
 import NavItem from "./NavItem";
 import ProfileItem from "./ProfileItem";
+import { useNavigate } from "react-router-dom";
 
 const Nav = ({user}) => {
-
+    const navigate = useNavigate();
+    const handleHome = () => {
+        navigate('/home')
+    }
 
     return (
         <div className="h-[4rem] font-montserrat" >
             <div className=" w-[70%] h-full m-auto flex my-2">
                 <div className=" h-full flex w-[50%] items-center gap-6 ">
                     <img className=" h-14 mr-12" src="https://bepandalife.com/wp-content/uploads/2021/04/cropped-IMAGOTIPO-BE-PANDA_COLOR-TRANPARENCIA_WEB.png" alt="Logo" />
-                    <NavItem label="Inicio" size="lg"/>
+                    <NavItem onClick={handleHome} label="Inicio" size="lg"/>
                     <NavItem label="Cursos" size="lg"/>
                 </div>
                 <div className="flex items-center justify-end w-[50%]">

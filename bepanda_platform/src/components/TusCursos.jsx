@@ -21,8 +21,8 @@ const TusCursos = () => {
         
         <>
         <div className='flex flex-col items-center h-full'>
-        <div className='w-[78%] m-auto font-montserrat'>
-                <p className='text-3xl font-semibold text-white text-center mb-2 drop-shadow-xl'>Tus cursos</p>
+        <div className='w-[65%] m-auto font-montserrat'>
+                <p className='text-3xl font-semibold text-white text-center drop-shadow-xl'>Tus cursos</p>
                 
                 <Swiper speed={1000} spaceBetween={300} className='mb-10 p-12'  navigation={true} modules={[Navigation]}>
                     <SwiperSlide ><img  className='w-full rounded-md shadow-md' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Naturaleza-arboles.png/640px-Naturaleza-arboles.png" alt="" /></SwiperSlide>

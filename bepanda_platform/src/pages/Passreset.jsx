@@ -4,6 +4,7 @@ import Error from "../components/Error";
 import { useAuth } from "../utils/authProvider";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import SuccessMessage from "../components/SuccessMessage";
 
 const Passreset = () => {
 
@@ -16,6 +17,7 @@ const Passreset = () => {
       email: '',
       password: ''
   });
+  const [successMessage, setSuccessMessage] = useState(null)
 
 
   useEffect(() => {
@@ -43,7 +45,7 @@ const handleSubmit = (e) => {
             if (!res.data.success) {
                 setError(res.data.message);
             } else {
-                setError(res.data.message);
+                setSuccessMessage(res.data.message);
                 
             }
         })
@@ -60,10 +62,10 @@ const handleSubmit = (e) => {
     </div>
 
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                {error && <div className="text-center"><Error errorMessage={error} /></div>}
+                {error ?  <div className="text-center"><Error errorMessage={error} /></div> : <SuccessMessage message={successMessage}/>}
                 <form onSubmit={handleSubmit} className="w-full max-w-sm">
                     <div>
-                        <label htmlFor="email" className="block text-sm font-medium leading-6 text-text-color">
+                        <label htmlFor="email" className=" block text-sm font-medium leading-6 text-text-color">
                             Escribe tu email
                         </label>
                         <div className="mt-2">
@@ -74,7 +76,7 @@ const handleSubmit = (e) => {
                                 type="email"
                                 required
                                 autoComplete="email"
-                                className="block w-full rounded-md border-0 py-1.5 text-text-color shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                className="mb-4 block w-full rounded-md border-0 py-1.5 text-text-color shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             />
                         </div>
                     </div>

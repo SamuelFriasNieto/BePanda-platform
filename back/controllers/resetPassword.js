@@ -7,10 +7,17 @@ const JWT_SECRET = 'your_jwt_secret';
 export async function resetPassword(req, res) {
   try {
     const { token, password, confirmPassword } = req.body;
+    console.log(req.body)
+    let email = '';
 
     // Verify the JWT token
-    const decoded = jwt.verify(token, JWT_SECRET);
-    const email = decoded.email;
+    if(req.body.email) {
+      email = req.body.email;
+    } else {
+      const decoded = jwt.verify(token, JWT_SECRET);
+      email = decoded.email;
+    }
+ 
 
     // Ensure the passwords match
     if (password !== confirmPassword) {

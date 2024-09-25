@@ -12,7 +12,9 @@ module.exports = {
       colors: {
         'text-color': '#323338',
         'text-color-hover': '#BDCCAC',
-        'panda-green': '#818770'
+        'panda-green': '#818770',
+        'panda-yellow': '#CFA011',
+        'panda-white': '#E6E6E5'
       },
       fontFamily: {
         'montserrat': ['Montserrat']

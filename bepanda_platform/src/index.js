@@ -15,6 +15,7 @@ import RedireccionPass from './components/RedireccionPass';
 import NewPass from './components/ResetPasswordForm';
 import Profile from './pages/Profile';
 import Admin from './pages/Admin';
+import Modulos from './pages/Modulos';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,6 +26,7 @@ root.render(
                 <Route path='/login' element={<Auth />} />
                 <Route path= '/home' element={<ProtectedRoute><Home/></ProtectedRoute>} />
                 <Route path= '/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>} />
+                <Route path= '/modulos' element={<ProtectedRoute><Modulos/></ProtectedRoute>} />
                 <Route path= '/admin' element={<ProtectedRoute><Admin/></ProtectedRoute>} />
                 <Route path= '/verify-mail' element={<Passreset/>}/>
                 <Route path= '/reset-password' element={<NewPass/>}/>

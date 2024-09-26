@@ -13,5 +13,22 @@ model User {
   email    String   @unique
   name     String
   password String?
-  admin Boolean
+  admin    Boolean
+}
+
+model Cursos {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  nombre String?
+  idCurso String @unique
+  idThumbnail String @unique
+  videos Videos[]
+}
+
+model Videos {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    nombre String
+    idVideo String @unique
+    orden Int
+    curso Cursos @relation(fields: [idCurso], references: [idCurso])
+    idCurso String 
 }

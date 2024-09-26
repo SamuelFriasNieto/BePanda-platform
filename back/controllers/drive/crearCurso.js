@@ -1,3 +1,4 @@
+import { insertCurso } from "../../model/modelCursos.js";
 import { drive } from "./driveAuth.js";
 import { Readable } from 'stream';
 
@@ -9,33 +10,35 @@ function bufferToStream(buffer) {
   return stream;
 }
 
-export async function crearCurso(req, res)  { 
-    console.log(req.body.text)
-    const response = await drive.files.create({
-        requestBody: {
-            name:req.body.text,
-            mimeType: "application/vnd.google-apps.folder"
-        }
-    })
-    console.log(response.data.id)
+export async function crearCurso(req, res) {
+  console.log(req.body.text)
+  const response = await drive.files.create({
+    requestBody: {
+      name: req.body.text,
+      mimeType: "application/vnd.google-apps.folder"
+    }
+  })
+  console.log(response.data.id)
 
-    const fileStream = bufferToStream(req.file.buffer);
+  const fileStream = bufferToStream(req.file.buffer);
 
 
-    const response2 = await drive.files.create({
-        requestBody: {
-            name:req.file.originalname,
-            parents: [response.data.id]
-         // Optional: the ID of the folder where the video will be uploaded
+  const response2 = await drive.files.create({
+    requestBody: {
+      name: req.file.originalname,
+      parents: [response.data.id]
+      // Optional: the ID of the folder where the video will be uploaded
     },
     media: {
-        mimeType: req.file.mimetype, // Set the correct MIME type
-        body: fileStream // Pass the file buffer (since it's in memory)
-  }
-    })
-    console.log('File uploaded successfully:', response2.data);
-    
-      res.send({success:true, message: 'Login successful' });
+      mimeType: req.file.mimetype, // Set the correct MIME type
+      body: fileStream // Pass the file buffer (since it's in memory)
+    }
+  })
+
+  insertCurso(response.data.id,req.body.text,response2.data.id)
+  console.log('File uploaded successfully:', response2.data);
+
+  res.send({ success: true, message: 'Login successful' });
 
 }
 

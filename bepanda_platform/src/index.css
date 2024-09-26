@@ -23,3 +23,13 @@ code {
 .swiper-button-next, .swiper-button-prev {
   color: white;
 }
+
+.cursos:hover {
+  box-shadow: 10px 10px #323338;
+}
+
+
+
+.cursos-boton:hover {
+  box-shadow: 0 0 0 3px white inset;
+}

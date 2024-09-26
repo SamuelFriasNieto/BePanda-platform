@@ -8,13 +8,13 @@ import { passreset } from './controllers/passreset.js';
 import { verifyResetLink } from './controllers/verifyResetLink.js';
 import { resetPassword } from './controllers/resetPassword.js';
 import { verifyToken } from './controllers/verifyToken.js';
-import { google } from 'googleapis';
-import credentials from './libs/googleCredentials.json' assert { type: 'json' }
+
 
 import path from 'path'
 import fs from 'fs'
 import { crearCurso } from './controllers/drive/crearCurso.js';
 import multer from "multer";
+import { getCursos } from './controllers/drive/getCursos.js';
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
@@ -22,18 +22,6 @@ const upload = multer({ storage: storage });
 
 
 
-const oauth2client = new google.auth.OAuth2(credentials.web.client_id,credentials.web.client_secret,credentials.web.redirect_uri)
-
-oauth2client.setCredentials({refresh_token:credentials.web.refresh_token})
-
-
-// const filepath = path.join(__dirname, 'file.txt')
-//Files mimeType: "application/vnd.google-apps.folder"
-
-const drive = google.drive({ 
-  version: 'v3', 
-  auth: oauth2client
-})
 
 
 
@@ -65,12 +53,7 @@ const uploadVideo = async () => {
 
 uploadVideo(); */
 
-const response = await drive.files.create({
-  requestBody: {
-    name: "pruebo",
-     mimeType: "application/vnd.google-apps.folder"
-  }
-})
+
 
 
 
@@ -93,6 +76,7 @@ app.use(session({
 
 app.post('/login', loginUser);
 app.post('/crearCurso',upload.single('file'), crearCurso);
+app.get('/getCursos', getCursos);
 
 app.get('/check-session', (req, res) => {
   console.log('esto es check-session', req.session)

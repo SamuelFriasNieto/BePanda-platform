@@ -15,6 +15,10 @@ import fs from 'fs'
 import { crearCurso } from './controllers/drive/crearCurso.js';
 import multer from "multer";
 import { getCursos } from './controllers/drive/getCursos.js';
+import { getCurso } from './controllers/drive/getCurso.js';
+import { createVideo } from './controllers/drive/createVideo.js';
+import { getModulos } from './controllers/drive/getModulos.js';
+import { getVideo } from './controllers/drive/getVideo.js';
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
@@ -76,10 +80,22 @@ app.use(session({
 
 app.post('/login', loginUser);
 app.post('/crearCurso',upload.single('file'), crearCurso);
+
+
+app.post('/crearVideo',upload.fields([
+  {name:'video',maxCount:1},
+  {name:'audio', maxCount:1},
+   {name: 'PDF', maxCount:1 }
+  
+]), createVideo);
+
+
 app.get('/getCursos', getCursos);
+app.get('/getCurso', getCurso);
+app.get('/getModulos', getModulos);
+app.get('/getVideo', getVideo);
 
 app.get('/check-session', (req, res) => {
-  console.log('esto es check-session', req.session)
     if (req.session.user) {
       res.send({ loggedIn: true, user: req.session.user });
 
@@ -96,7 +112,6 @@ app.get('/check-session', (req, res) => {
         return res.status(500).send({ error: "No se pudo cerrar la sesión correctamente." });
       }
       res.clearCookie('connect.sid', { path: '/', httpOnly: true, secure: false }); // Match the cookie name and path 
-      console.log(req.session, 'logout')
       return res.send({ success: true, message: "Sesión cerrada correctamente." });
     });
     

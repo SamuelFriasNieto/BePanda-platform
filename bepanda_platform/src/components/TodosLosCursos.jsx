@@ -6,8 +6,8 @@ const TodosLosCursos = () => {
   const [imageUrl, setImageUrl] = useState('');
   const navigate = useNavigate()
 
-  const handleClick = (e) => {
-    navigate('/modulos?cursoId=12334')
+  const handleClick = (id) => {
+    navigate(`/modulos?cursoId=${id}`)
   }
 
   useEffect(() => {
@@ -38,10 +38,9 @@ const TodosLosCursos = () => {
     <div className="w-full px-32">
       <div className="flex gap-10 flex-wrap">
         {imageUrl ? imageUrl.map((url) => {
-          console.log(url)
           return (
             
-            <div onClick={handleClick} className="w-[23rem] relative overflow-hidden group cursos  shadow-xl rounded-md hover:scale-105 transition-all cursor-pointer">
+            <div key={url.idCurso} onClick={()=> {handleClick(url.idCurso)}} className="w-[23rem] relative overflow-hidden group cursos  shadow-xl rounded-md hover:scale-105 transition-all cursor-pointer">
               <img className=" " src={url.imageUrl} alt="Fetched from server" />
               <div className="absolute bottom-0 left-[-18.8rem] rounded-md text-white p-5 w-[80%] bg-black bg-opacity-80 group-hover:left-0 transition-all">
                 <p>{url.nombre}</p>

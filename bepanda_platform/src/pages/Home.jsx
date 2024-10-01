@@ -4,7 +4,6 @@ import TusCursos from "../components/TusCursos";
 
 const Home = () => {
   const user = useAuth();
-  console.log(user);
 
   return (
     <div> 

@@ -12,7 +12,6 @@ const ResetPasswordForm = () => {
     const [error, setError] = useState(null);
     const user = useAuth();
     const email = user.user.email;
-    console.log(user)
 
     const handlePass = () => {
         setChangePassword((current) => !current)

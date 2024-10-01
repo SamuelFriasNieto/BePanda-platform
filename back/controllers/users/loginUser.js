@@ -19,7 +19,6 @@ import bcrypt from 'bcrypt';
     req.session.user =  user ; // Guarda la información que necesites
     res.send({success:true, message: 'Login successful',user:user });
   } catch (error) {
-    console.log(error)
     res.status(200).json({success:false, message:error.message})
   }
     // Lógica de autenticación aquí

@@ -19,7 +19,7 @@ const ProfileDropdown = ({visible}) => {
     const handleLogout = async () => {
         try {
             const response = await axios.post('http://localhost:3001/logout', {}, { withCredentials: true })
-            console.log(response)
+            
             if(response.data.success){
                 setUser(null);
 

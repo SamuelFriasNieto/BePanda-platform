@@ -7,7 +7,6 @@ const JWT_SECRET = 'your_jwt_secret';
 export async function resetPassword(req, res) {
   try {
     const { token, password, confirmPassword } = req.body;
-    console.log(req.body)
     let email = '';
 
     // Verify the JWT token
@@ -32,7 +31,6 @@ export async function resetPassword(req, res) {
 
     return res.send({ success: true, message: 'Contraseña actualizada correctamente' });
   } catch (error) {
-    console.log(error);
     return res.status(400).json({ success: false, message: 'El token es inválido o ha expirado.' });
   }
 }

@@ -1,7 +1,6 @@
 import prismadb from '../libs/prismadb.js'
 
 export async function insertCurso (idCurso,nombre, idThumbnail) {
-  console.log(idCurso, nombre, idThumbnail, "bueeeeeeeeeeeeeeeeeeeeeeeeeeee")
   
     const curso = await prismadb.cursos.create({
         data: {
@@ -16,4 +15,14 @@ export async function getCursosDB () {
     const cursos = await prismadb.cursos.findMany()
 
     return cursos;
+}
+
+export async function getCursoDB (idCurso) {
+    const curso = await prismadb.cursos.findUnique({
+        where: {
+            idCurso: idCurso
+        }
+    })
+
+    return curso;
 }

@@ -16,6 +16,7 @@ import NewPass from './components/ResetPasswordForm';
 import Profile from './pages/Profile';
 import Admin from './pages/Admin';
 import Modulos from './pages/Modulos';
+import AdminVideo from './pages/AdminVideo';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,6 +29,7 @@ root.render(
                 <Route path= '/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>} />
                 <Route path= '/modulos' element={<ProtectedRoute><Modulos/></ProtectedRoute>} />
                 <Route path= '/admin' element={<ProtectedRoute><Admin/></ProtectedRoute>} />
+                <Route path= '/adminVideo' element={<ProtectedRoute><AdminVideo/></ProtectedRoute>} />
                 <Route path= '/verify-mail' element={<Passreset/>}/>
                 <Route path= '/reset-password' element={<NewPass/>}/>
                 <Route path="/verify-reset" element={<RedireccionPass />} />

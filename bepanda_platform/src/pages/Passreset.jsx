@@ -41,7 +41,6 @@ const handleSubmit = (e) => {
     e.preventDefault();
     axios.post("http://localhost:3001/check-mail", inputs, { withCredentials: true })
         .then(res => {
-            console.log(res);
             if (!res.data.success) {
                 setError(res.data.message);
             } else {

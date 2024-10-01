@@ -19,7 +19,7 @@ model User {
 model Cursos {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   nombre String?
-  idCurso String @unique
+  idCurso String? @unique
   idThumbnail String @unique
   videos Videos[]
 }
@@ -29,6 +29,8 @@ model Videos {
     nombre String
     idVideo String @unique
     orden Int
+    idAudio String?
+    idPDF String?
     curso Cursos @relation(fields: [idCurso], references: [idCurso])
     idCurso String 
 }

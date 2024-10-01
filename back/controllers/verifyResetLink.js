@@ -29,7 +29,6 @@ export async function verifyResetLink(req, res) {
 
     return res.redirect(`http://localhost:3000/verify-reset?token=${token}`);
   } catch (error) {
-    console.log(error);
     res.status(400).json({ success: false, message: 'Invalid or expired token.' });
   }
 }

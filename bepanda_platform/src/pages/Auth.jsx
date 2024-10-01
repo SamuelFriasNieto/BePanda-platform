@@ -38,10 +38,8 @@ const Auth = () => {
         e.preventDefault();
         axios.post("http://localhost:3001/login", inputs, { withCredentials: true })
             .then(res => {
-                console.log(res);
                 if (!res.data.success) {
                     setError(res.data.message);
-                    console.log(res.data.message);
                 } else {
                     setUser(res.data.user);
                     navigate('/home');

@@ -11,14 +11,12 @@ function bufferToStream(buffer) {
 }
 
 export async function crearCurso(req, res) {
-  console.log(req.body.text)
   const response = await drive.files.create({
     requestBody: {
       name: req.body.text,
       mimeType: "application/vnd.google-apps.folder"
     }
   })
-  console.log(response.data.id)
 
   const fileStream = bufferToStream(req.file.buffer);
 
@@ -36,7 +34,6 @@ export async function crearCurso(req, res) {
   })
 
   insertCurso(response.data.id,req.body.text,response2.data.id)
-  console.log('File uploaded successfully:', response2.data);
 
   res.send({ success: true, message: 'Login successful' });
 

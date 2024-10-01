@@ -19,7 +19,6 @@ const AdminUserCreation = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("asasdasd")
     fetch('http://localhost:3001/createUser', {
       
         method: 'POST', // Método HTTP POST para enviar los datos

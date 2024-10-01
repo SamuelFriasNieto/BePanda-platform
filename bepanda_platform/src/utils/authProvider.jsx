@@ -12,7 +12,6 @@ export const AuthProvider = ({ children }) => {
     fetch('http://localhost:3001/check-session', { credentials: 'include' })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         if (data.loggedIn) {
           setUser(data.user);  // Aquí actualizamos el estado del usuario
         }else {

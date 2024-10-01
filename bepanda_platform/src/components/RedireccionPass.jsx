@@ -19,7 +19,6 @@ const RedireccionPass = () => {
     const verifyToken = async () => {
       try {
         await axios.get(`http://localhost:3001/verify-reset?token=${token}`);
-        console.log('Password reset successfully');
         // Optionally handle success case here
       } catch (error) {
         console.error('Error verifying token or resetting password:', error);

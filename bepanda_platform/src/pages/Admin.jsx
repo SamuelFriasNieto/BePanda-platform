@@ -49,7 +49,6 @@ const Admin = () => {
       })
       
       setMostrarLoader(false)
-      console.log('File uploaded successfully:', response.data);
       window.location.reload()
     } catch (error) {
       console.error('Error uploading the file:', error);

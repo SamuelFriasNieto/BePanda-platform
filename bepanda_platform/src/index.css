@@ -33,3 +33,23 @@ code {
 .cursos-boton:hover {
   box-shadow: 0 0 0 3px white inset;
 }
+.plyr__control, .plyr__control--overlaid {
+  background: #818770;
+}
+
+.plyr__control:hover, .plyr__control--overlaid:hover {
+  background: #bfc9a6 !important;
+}
+.plyr {
+  border-radius: .5rem;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.377);
+  height: 40rem;
+}
+
+.plyr--full-ui input[type=range] {
+  color: #818770;
+}
+
+
+
+

@@ -11,11 +11,7 @@ import { Navigation } from 'swiper/modules';
 
 
 const TusCursos = () => {
-    const photos = [
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Naturaleza-arboles.png/640px-Naturaleza-arboles.png',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Naturaleza-arboles.png/640px-Naturaleza-arboles.png',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Naturaleza-arboles.png/640px-Naturaleza-arboles.png',
-    ];
+
 
     return (
         
@@ -25,10 +21,12 @@ const TusCursos = () => {
                 <p className='text-3xl font-semibold text-white text-center drop-shadow-xl'>Tus cursos</p>
                 
                 <Swiper speed={1000} spaceBetween={300} className='mb-10 p-12'  navigation={true} modules={[Navigation]}>
-                    <SwiperSlide ><img  className='w-full rounded-md shadow-md' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Naturaleza-arboles.png/640px-Naturaleza-arboles.png" alt="" /></SwiperSlide>
-                    <SwiperSlide><img className='w-full rounded-md shadow-md' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Naturaleza-arboles.png/640px-Naturaleza-arboles.png" alt="" /></SwiperSlide>
-                    <SwiperSlide><img className='w-full rounded-md shadow-md' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Naturaleza-arboles.png/640px-Naturaleza-arboles.png" alt="" /></SwiperSlide>
-                    <SwiperSlide><img className='w-full rounded-md shadow-md' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Naturaleza-arboles.png/640px-Naturaleza-arboles.png" alt="" /></SwiperSlide>
+                    <SwiperSlide ><img  className='w-[50rem] h-[32rem] m-auto rounded-md shadow-md' src="https://cff2.earth.com/uploads/2017/05/03154453/shutterstock_559454563.jpg" alt="" /></SwiperSlide>
+                    <SwiperSlide ><img  className='w-[50rem] h-[32rem] m-auto rounded-md shadow-md' src="https://th.bing.com/th/id/R.c3399d9086cbf827f1adaea88b5cc6b6?rik=SoOjrGqCyV6m6Q&riu=http%3a%2f%2fpowerthoughtsmeditationclub.com%2fwp-content%2fuploads%2f2016%2f03%2fbreathingCover.jpg&ehk=Dm7uJFwPSNWP%2b%2fBqBgAkwMZk7QinPeGvYPi343HopAs%3d&risl=&pid=ImgRaw&r=0" alt="" /></SwiperSlide>
+
+                    
+
+
                 </Swiper>
             </div>
         </div>

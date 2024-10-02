@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import "plyr/dist/plyr.css";
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AdminUserCreation from './pages/AdminUserCreation';

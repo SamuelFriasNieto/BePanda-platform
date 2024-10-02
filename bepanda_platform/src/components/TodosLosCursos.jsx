@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 
 const TodosLosCursos = () => {
   const [imageUrl, setImageUrl] = useState('');
@@ -41,15 +42,15 @@ const TodosLosCursos = () => {
           return (
             
             <div key={url.idCurso} onClick={()=> {handleClick(url.idCurso)}} className="w-[23rem] relative overflow-hidden group cursos  shadow-xl rounded-md hover:scale-105 transition-all cursor-pointer">
-              <img className=" " src={url.imageUrl} alt="Fetched from server" />
-              <div className="absolute bottom-0 left-[-18.8rem] rounded-md text-white p-5 w-[80%] bg-black bg-opacity-80 group-hover:left-0 transition-all">
+              <img className=" h-full" src={url.imageUrl} alt="Fetched from server" />
+              <div className="absolute bottom-0 left-[-18.8rem]  rounded-md text-white p-5 w-[80%] bg-black bg-opacity-80 group-hover:left-0 transition-all">
                 <p>{url.nombre}</p>
               </div>
             </div>
             
             )
         })
-          : null}
+          : <Loader/>}
       </div>
       
 

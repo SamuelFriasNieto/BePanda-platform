@@ -1,68 +1,85 @@
+import { getModuloDB } from "../../model/modelVideos.js";
 import { drive } from "./driveAuth.js";
 
-export async function getVideo (req,res) {
-    const video =await drive.files.get({
-        fileId:req.query.idVideo, alt:'media'
-    },
-    {
-        responseType:'arraybuffer'
-    })
-    console.log(video)
-    const buffer = Buffer.from(video.data);
-    const base64Image = buffer.toString("base64");
-
-    res.send({success:true,  video:base64Image})
-}
-
-
-
-/*
 
 
 
 
-export async function getVideo (req,res) {
-    const video =await drive.files.get({
-        fileId:req.query.idVideo, alt:'media'
-    },
-    {
-        responseType:'arraybuffer'
-    })
-    console.log(video)
-    const buffer = Buffer.from(video.data);
-    const base64Image = buffer.toString("base64");
+export async function getVideo(req, res) {
+  try {
 
-    res.send({success:true,  video:base64Image})
-}
+    const range = req.headers.range;
+    const videoId = req.query.idVideo;
 
-app.get('/getVideo', (req, res) => {
-  const videoPath = path.resolve(__dirname, 'videos', 'your-video.mp4');
-  const stat = fs.statSync(videoPath);
-  const fileSize = stat.size;
-  const range = req.headers.range;
+    const modulo = await getModuloDB(videoId)
+    console.log(modulo)
 
-  if (range) {
-    const parts = range.replace(/bytes=/, "").split("-");
-    const start = parseInt(parts[0], 10);
-    const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+    if (!req.query.module) {
+      if (!range) {
+        return res.status(400).send("Requires Range header");
+      }
 
-    const chunkSize = (end - start) + 1;
-    const file = fs.createReadStream(videoPath, { start, end });
-    const head = {
-      'Content-Range': `bytes ${start}-${end}/${fileSize}`,
-      'Accept-Ranges': 'bytes',
-      'Content-Length': chunkSize,
-      'Content-Type': 'video/mp4',
-    };
+      // Obtén los metadatos del archivo (incluido el tamaño)
+      const metadata = await drive.files.get({
+        fileId: videoId,
+        fields: 'size',
+      });
 
-    res.writeHead(206, head); // Partial content
-    file.pipe(res);
-  } else {
-    const head = {
-      'Content-Length': fileSize,
-      'Content-Type': 'video/mp4',
-    };
-    res.writeHead(200, head);
-    fs.createReadStream(videoPath).pipe(res);
+      const videoSize = parseInt(metadata.data.size, 10);
+      const CHUNK_SIZE = 10 ** 6; // Tamaño del chunk de 1MB
+      const start = Number(range.replace(/\D/g, ""));
+      const end = Math.min(start + CHUNK_SIZE, videoSize - 1);
+
+      const contentLength = end - start + 1;
+      const headers = {
+        "Content-Range": `bytes ${start}-${end}/${videoSize}`,
+        "Accept-Ranges": "bytes",
+        "Content-Length": contentLength,
+        "Content-Type": "video/mp4",
+      };
+
+      res.writeHead(206, headers);
+
+      // Obtener el segmento de video desde Google Drive
+      const videoStream = await drive.files.get(
+        { fileId: videoId, alt: 'media' },
+        {
+          responseType: 'stream',
+          headers: {
+            Range: `bytes=${start}-${end}`,
+          },
+        }
+      );
+      videoStream.data.pipe(res);
+
+    } else {
+      res.send({ message: modulo })
+
+    }
+
+
+
+    // Transmitir los datos al cliente
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error fetching video");
   }
-});*/
+}
+
+// export async function getVideo (req,res) {
+//     const video =await drive.files.get({
+//         fileId:req.query.idVideo, alt:'media'
+//     },
+//     {
+//         responseType:'arraybuffer'
+//     })
+//     console.log(video)
+//     const buffer = Buffer.from(video.data);
+//     const base64Image = buffer.toString("base64");
+
+//     res.send({success:true,  video:base64Image})
+// }
+
+
+

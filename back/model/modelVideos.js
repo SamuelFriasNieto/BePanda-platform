@@ -29,3 +29,13 @@ export async function getModulosDB(idCurso) {
 
     return modulos;
 }
+
+export async function getModuloDB(idVideo) {
+    const modulo = await prismadb.videos.findMany({
+        where:{
+            idVideo:idVideo
+        }
+    })
+
+    return modulo;
+}
